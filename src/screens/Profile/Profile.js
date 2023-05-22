@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function Profile() {
   const user = {
-    username: 'JohnDoe',
+    username: 'Test',
     avatar: require('../../../assets/icons/avatar.png'), // Replace with the actual path to the avatar image
   };
 
