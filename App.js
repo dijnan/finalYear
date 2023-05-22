@@ -1,9 +1,15 @@
 import React from "react";
-import { View, Text } from "react-native";
 import AppContainer from "./src/navigations/AppNavigation";
+import AppProvider from "./src/contexts/AppProvider";
+import { Text, View } from "react-native";
 
 //import "./firebaseConfig";
 
 export default function App() {
-  return <AppContainer />;
+  return (
+    <AppProvider>
+      <AppContainer />
+    </AppProvider>
+    
+  );
 }

@@ -12,12 +12,15 @@ import DrawerContainer from "../screens/DrawerContainer/DrawerContainer";
 import IngredientScreen from "../screens/Ingredient/IngredientScreen";
 import SearchScreen from "../screens/Search/SearchScreen";
 import IngredientsDetailsScreen from "../screens/IngredientsDetails/IngredientsDetailsScreen";
+import Profile from "../screens/Profile/Profile";
+import { useAppContext } from "../contexts/AppProvider";
 
 const Stack = createStackNavigator();
 
 function MainNavigator() {
-  const user = {};
-  
+  const { user } = useAppContext();
+  console.log(user);
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -42,6 +45,7 @@ function MainNavigator() {
           <Stack.Screen name="RecipesList" component={RecipesListScreen} />
           <Stack.Screen name="Ingredient" component={IngredientScreen} />
           <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Profile" component={Profile} />
           <Stack.Screen
             name="IngredientsDetails"
             component={IngredientsDetailsScreen}
