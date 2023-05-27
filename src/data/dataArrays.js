@@ -15,7 +15,7 @@ export const categories = [
     id: 2,
     name: 'Breakfast dishes',
     photo_url: //change pic
-      'https://images.unsplash.com/photo-1533777324565-a040eb52facd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'
+      'https://foodieinlagos.com/wp-content/uploads/2020/08/charisse-kenion-vCEDCj0tugw-unsplash.jpg'
   },
   {
     id: 4,
@@ -27,7 +27,7 @@ export const categories = [
     id: 0,
     name: 'Snacks',
     photo_url:  
-     'https://amp.businessinsider.com/images/5c084bf7bde70f4ea53f0436-750-563.jpg'
+     'https://acleanbake.com/wp-content/uploads/2018/05/5-Ingredient-Baked-Tofu-Recipe-vegan-gluten-free-9.jpg'
   },
 
 ];
@@ -87,19 +87,19 @@ export const recipes = [
     time: '30',
     Nutritional_info: '-Calories: 84kcal\n--Total fat: 5g\n--Carbohydrates:9g\n Fiber: 3g\n Sodium: 321mg\n Protein: 4g',
     ingredients: [
-      [1, '2 cups chopped'], //chopped spinach
-      [14, '1 cup chopped'], //chopped kale
-      [15, '1 cup'], //chopped pumpkin leaves
-      [4, '1/2 cup'], //chpp onion
-      [9, '1/2 cup'], //chpp tomatoes
-      [16, '1/2 cup'],  //chpp bellp
-      [17, '2 tablespoons'], //olive oil
-      [5, '1 tablespoon'], //chpp crayfish
-      [20, '1 tablespoon'], //chpp garlic
-      [21, '1 tablespoon'], //ging
+      [1, '2 cups chopped'], 
+      [14, '1 cup chopped'], 
+      [15, '1 cup'], 
+      [4, '1/2 cup'], 
+      [9, '1/2 cup'], 
+      [16, '1/2 cup'],  
+      [17, '2 tablespoons'], 
+      [5, '1 tablespoon'], 
+      [20, '1 tablespoon'], 
+      [21, '1 tablespoon'], 
       [22, '1 teaspoon'],
-      [19, '4 cups'], //water
-      [7, 'to taste'], //salt
+      [19, '4 cups'], 
+      [7, 'to taste'], 
       [13, 'to taste'] 
     ],
     description:
@@ -164,7 +164,7 @@ export const recipes = [
       [13, '1 teaspoon']
     ],
     description:
-      '-- Chop pumpkin leaves and water leaves finely.Cook beef and cow skin with water in a pot for 30 minutes.Add smoked fish and cook for another 10 minutes.\n\n -- Sauté onions, red bell peppers, and scotch bonnet peppers with palm oil in a separate pan until soft.Add ground crayfish and stir well, then pour into the pot with the cooked beef and cow skin.--\n\nAdd chopped pumpkin leaves and water leaves and stir well.Simmer soup for 10-15 minutes, add ground pepper, and serve hot with fufu or a suitable side dish.'
+      '-- Chop pumpkin leaves and water leaves finely.Cook beef and cow skin with water in a pot for 30 minutes.Add smoked fish and cook for another 10 minutes.\n\n-- Sauté onions, red bell peppers, and scotch bonnet peppers with palm oil in a separate pan until soft.Add ground crayfish and stir well, then pour into the pot with the cooked beef and cow skin.\n\n--Add chopped pumpkin leaves and water leaves and stir well.Simmer soup for 10-15 minutes, add ground pepper, and serve hot with fufu or a suitable side dish.'
   },
   {
     recipeId: 9,
@@ -264,7 +264,7 @@ export const recipes = [
       [35, '500g'],
       [3, '1 chopped'],
       [20, '1 clove'],
-      [22, '1 teaspoon'], //that’s
+      [22, '1 teaspoon'], 
       [40, '1 teaspoon'],
       [33, '1 teaspoon'],
       [25, '1 tablespoon chopped'],

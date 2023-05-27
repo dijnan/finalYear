@@ -30,6 +30,8 @@ export default function RecipeScreen(props) {
 
   const slider1Ref = useRef();
 
+  console.log(item.Nutritional_info)
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerTransparent: "true",
@@ -112,6 +114,10 @@ export default function RecipeScreen(props) {
           />
           <Text style={styles.infoRecipe}>{item.time} minutes </Text>
         </View>
+
+  
+
+        <Text style={{}}>{item.Nutritional_info}</Text>
 
         <View style={styles.infoContainer}>
           <ViewIngredientsButton
