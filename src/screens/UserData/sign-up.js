@@ -20,17 +20,17 @@ export default function SignupForm({ navigation }) {
   const handleSignup = () => {
     if (password !== confirmPassword) {
       // Handle password confirmation error
-      ToastAndroid.show("Password doesn't match");
+      ToastAndroid.show("Password doesn't match", ToastAndroid.SHORT);
       return;
     }
 
     createUserWithEmailAndPassword(auth, email.trim(), password.trim())
       .then((userCredential) => {
-        ToastAndroid.show("Signed up successfully");
+        ToastAndroid.show("Signed up successfully", ToastAndroid.SHORT);
         setUser(userCredential.user);
       })
       .catch((error) => {
-        ToastAndroid.show("Sign up failed");
+        ToastAndroid.show("Sign up failed", ToastAndroid.SHORT);
         console.log(error);
       });
   };
