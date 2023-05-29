@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import styles from "./styles";
 import { recipes } from "../../data/dataArrays";
 import MenuImage from "../../components/MenuImage/MenuImage";
@@ -25,8 +26,11 @@ export default function HomeScreen(props) {
         />
       ),
       headerRight: () => (
-        <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-          <Image source={require("../../../assets/icons/avatar.png")} />
+        <TouchableOpacity
+          style={{ marginRight: 16 }}
+          onPress={() => navigation.navigate("Profile")}
+        >
+          <Icon name="account-circle" size={24} />
         </TouchableOpacity>
       ),
     });

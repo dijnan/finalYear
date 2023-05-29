@@ -19,19 +19,9 @@ const Stack = createStackNavigator();
 
 function MainNavigator() {
   const { user } = useAppContext();
-  console.log(user);
 
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerTitleStyle: {
-          fontWeight: "bold",
-          textAlign: "center",
-          alignSelf: "center",
-          flex: 1,
-        },
-      }}
-    >
+    <Stack.Navigator>
       {!user ? (
         <>
           <Stack.Screen name="Log in" component={LoginForm} />
