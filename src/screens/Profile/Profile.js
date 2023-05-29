@@ -1,9 +1,13 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Button } from "react-native";
 import React from "react";
 import { useAppContext } from "../../contexts/AppProvider";
 
 export default function Profile() {
-  const { user } = useAppContext();
+  const { user, setUser } = useAppContext();
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
@@ -15,6 +19,7 @@ export default function Profile() {
         style={styles.avatar}
       />
       <Text style={styles.username}>{user.email}</Text>
+      <Button title="Log Out" onPress={() => setUser(null)} />
     </View>
   );
 }
@@ -34,6 +39,7 @@ const styles = StyleSheet.create({
   username: {
     fontSize: 24,
     fontWeight: "bold",
+    marginBottom: 10,
   },
 });
 
