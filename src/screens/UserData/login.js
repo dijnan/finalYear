@@ -1,21 +1,29 @@
 import React, { useState } from "react";
-import { StyleSheet, View, TextInput, Button, Text } from "react-native";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  Text,
+  ToastAndroid,
+} from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import {auth} from "../../../firebaseConfig"
+import { auth } from "../../../firebaseConfig";
 import { useAppContext } from "../../contexts/AppProvider";
-
 
 export default function LoginForm({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const {setUser} = useAppContext();
+  const { setUser } = useAppContext();
 
   const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email.trim(), password.trim())
       .then((userCredential) => {
         setUser(userCredential.user);
+        ToastAndroid.show("Logged in", ToastAndroid.SHORT);
       })
       .catch((err) => {
+        ToastAndroid.show("Login failed", ToastAndroid.SHORT);
         console.log(err);
       });
   };

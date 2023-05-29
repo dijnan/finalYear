@@ -1,29 +1,37 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, TextInput, Button, Text } from 'react-native';
-import { createUserWithEmailAndPassword } from 'firebase/auth'; //
-import {auth} from "../../../firebaseConfig"
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Button,
+  Text,
+  ToastAndroid,
+} from "react-native";
+import { createUserWithEmailAndPassword } from "firebase/auth"; //
+import { auth } from "../../../firebaseConfig";
+import { useAppContext } from "../../contexts/AppProvider";
 
 export default function SignupForm({ navigation }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const { setUser } = useAppContext();
 
   const handleSignup = () => {
     if (password !== confirmPassword) {
       // Handle password confirmation error
+      ToastAndroid.show("Password doesn't match");
       return;
     }
 
-    console.log(email, password)
-
-    createUserWithEmailAndPassword(auth, email, password)
+    createUserWithEmailAndPassword(auth, email.trim(), password.trim())
       .then((userCredential) => {
-        // Handle successful sign-up
-        console.log(userCredential.user)
+        ToastAndroid.show("Signed up successfully");
+        setUser(userCredential.user);
       })
       .catch((error) => {
-        // Handle sign-up error
-        console.log(error)
+        ToastAndroid.show("Sign up failed");
+        console.log(error);
       });
   };
 
@@ -34,7 +42,6 @@ export default function SignupForm({ navigation }) {
         placeholder="Email"
         value={email}
         onChangeText={setEmail}
-        
       />
       <TextInput
         style={styles.input}
@@ -50,11 +57,11 @@ export default function SignupForm({ navigation }) {
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <Button
-        title="Sign up"
-        onPress={handleSignup}
-      />
-      <Text style={styles.loginLink} onPress={() => navigation.navigate('Log in')}>
+      <Button title="Sign up" onPress={handleSignup} />
+      <Text
+        style={styles.loginLink}
+        onPress={() => navigation.navigate("Log in")}
+      >
         Already have an account? Log in here.
       </Text>
     </View>
@@ -64,20 +71,20 @@ export default function SignupForm({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   input: {
-    width: '80%',
+    width: "80%",
     height: 40,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 1,
     marginVertical: 10,
     paddingHorizontal: 10,
   },
   loginLink: {
     marginVertical: 10,
-    color: 'blue',
-    textDecorationLine: 'underline',
+    color: "blue",
+    textDecorationLine: "underline",
   },
 });
