@@ -16,6 +16,7 @@ import {
 } from "../../data/MockDataAPI";
 import BackButton from "../../components/BackButton/BackButton";
 import ViewIngredientsButton from "../../components/ViewIngredientsButton/ViewIngredientsButton";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const { width: viewportWidth } = Dimensions.get("window");
 
@@ -27,10 +28,11 @@ export default function RecipeScreen(props) {
   const title = getCategoryName(category.id);
 
   const [activeSlide, setActiveSlide] = useState(0);
+  const [showInfo, setShowInfo] = useState(false);
 
   const slider1Ref = useRef();
 
-  console.log(item.Nutritional_info)
+  console.log(item.Nutritional_info);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -115,9 +117,31 @@ export default function RecipeScreen(props) {
           <Text style={styles.infoRecipe}>{item.time} minutes </Text>
         </View>
 
-  
-
-        <Text style={{}}>{item.Nutritional_info}</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 16,
+          }}
+        >
+          <Text style={{ fontWeight: "bold", fontSize: 18 }}>
+            Nutritional Info
+          </Text>
+          <TouchableOpacity onPress={() => setShowInfo(!showInfo)}>
+            <Text
+              style={{
+                fontWeight: "bold",
+                fontSize: 14,
+                color: "rgb(73,182,77)",
+              }}
+            >
+              View Info +
+            </Text>
+          </TouchableOpacity>
+        </View>
+        {showInfo && <Text style={{}}>{item.Nutritional_info}</Text>}
 
         <View style={styles.infoContainer}>
           <ViewIngredientsButton
