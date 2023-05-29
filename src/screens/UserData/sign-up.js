@@ -6,6 +6,7 @@ import {
   Button,
   Text,
   ToastAndroid,
+  ActivityIndicator,
 } from "react-native";
 import { createUserWithEmailAndPassword } from "firebase/auth"; //
 import { auth } from "../../../firebaseConfig";
@@ -16,6 +17,7 @@ export default function SignupForm({ navigation }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const { setUser } = useAppContext();
+  const [loading, setLoading] = useState(false);
 
   const handleSignup = () => {
     if (password !== confirmPassword) {
@@ -24,19 +26,24 @@ export default function SignupForm({ navigation }) {
       return;
     }
 
+    setLoading(true);
     createUserWithEmailAndPassword(auth, email.trim(), password.trim())
       .then((userCredential) => {
         ToastAndroid.show("Signed up successfully", ToastAndroid.SHORT);
         setUser(userCredential.user);
       })
       .catch((error) => {
-        ToastAndroid.show("Sign up failed", ToastAndroid.SHORT);
+        ToastAndroid.show(error.message, ToastAndroid.SHORT);
         console.log(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
     <View style={styles.container}>
+      {loading && <ActivityIndicator />}
       <TextInput
         style={styles.input}
         placeholder="Email"

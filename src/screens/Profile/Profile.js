@@ -1,18 +1,20 @@
-
-//staticr
-import { StyleSheet, Text, View, Image } from 'react-native';
-import React from 'react';
+import { StyleSheet, Text, View, Image } from "react-native";
+import React from "react";
+import { useAppContext } from "../../contexts/AppProvider";
 
 export default function Profile() {
-  const user = {
-    username: 'Test',
-    avatar: require('../../../assets/icons/avatar.png'),
-  };
+  const { user } = useAppContext();
 
   return (
     <View style={styles.container}>
-      <Image source={user.avatar} style={styles.avatar} />
-      <Text style={styles.username}>{user.username}</Text>
+      <Image
+        source={{
+          uri:
+            user.photoURL || "https://ui-avatars.com/api/?name=" + user.email,
+        }}
+        style={styles.avatar}
+      />
+      <Text style={styles.username}>{user.email}</Text>
     </View>
   );
 }
@@ -20,8 +22,8 @@ export default function Profile() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   avatar: {
     width: 100,
@@ -31,11 +33,9 @@ const styles = StyleSheet.create({
   },
   username: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });
-
-
 
 //dynamic
 /*import React, { useEffect, useState } from 'react';

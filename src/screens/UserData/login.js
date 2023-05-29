@@ -6,6 +6,7 @@ import {
   Button,
   Text,
   ToastAndroid,
+  ActivityIndicator,
 } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebaseConfig";
@@ -15,21 +16,27 @@ export default function LoginForm({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { setUser } = useAppContext();
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
+    setLoading(true);
     signInWithEmailAndPassword(auth, email.trim(), password.trim())
       .then((userCredential) => {
         setUser(userCredential.user);
         ToastAndroid.show("Logged in", ToastAndroid.SHORT);
       })
       .catch((err) => {
-        ToastAndroid.show("Login failed", ToastAndroid.SHORT);
+        ToastAndroid.show(err.message, ToastAndroid.SHORT);
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
     <View style={styles.container}>
+      {loading && <ActivityIndicator />}
       <TextInput
         style={styles.input}
         placeholder="Email"
